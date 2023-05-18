@@ -87,6 +87,7 @@ section#loginPage {
           }
 
           .logo img {
+            max-width: 60%;
             margin-top: 3rem;
           }
 
@@ -105,8 +106,8 @@ section#loginPage {
           form {
             display: flex;
             flex-direction: column;
-            width: 80%;
-            margin-top: 5rem;
+            width: 100%;
+            margin-top: 3rem;
 
             button {
               margin-top: 0.5rem;
@@ -241,7 +242,8 @@ header#header {
     box-shadow: $defaultShadow;
 
     .logo img {
-      width: 170px;
+      margin-top: 1rem;
+      width: 95px;
     }
 
     .toggleMenu {
