@@ -1,7 +1,7 @@
 <template>
     <footer>
         <span class="copyright fontSmall">
-            Todos os Direitos reservados - <b>EAD</b>
+            Todos os Direitos reservados - <b>CodeFlow</b>
         </span>
     </footer>
 </template>

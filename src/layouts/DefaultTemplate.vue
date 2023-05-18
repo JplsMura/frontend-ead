@@ -24,7 +24,7 @@ export default {
       document.body.classList.add('page')
       document.body.classList.add('dark')
 
-      document.title =  'EAD Plataforma - ETI EAD';
+      document.title =  'CodeFlow';
     });
   },
 
