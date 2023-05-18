@@ -1,4 +1,4 @@
-# vue-3-ead
+# CodeFlow
 
 ## Project setup
 ```
