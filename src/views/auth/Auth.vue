@@ -38,7 +38,7 @@ export default {
       store.dispatch('auth', {
         email: 'test@email.com',
         password: '123',
-        device_name: 'teste'
+        device_name: window.navigator.userAgent
       })
     }
 
