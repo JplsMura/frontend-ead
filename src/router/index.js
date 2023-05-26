@@ -45,9 +45,10 @@ const routes = [
         component: ForgetPassword,
       },
       {
-        path: '/reset-senha',
+        path: '/reset/:token',
         name: 'reset.password',
         component: ResetPassword,
+        props: true,
       },
     ],
   },
