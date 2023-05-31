@@ -12,22 +12,39 @@
     <div class="content">
       <ul class="listCourses">
         <card-course
-        :title="'Curso de Laravel'"
-        :image="''"
-        :bgName="'laravel'"/>
+          class="animate__animated animate__headShake"
+          v-for="course in courses"
+          :key="course.id"
+          :bgName="'laravel'"
+          :course="course"
+        >
+        </card-course>
       </ul>
     </div>
   </div>
 </template>
 
 <script>
-import CardCourse from '@/views/home/components/CardCourse.vue';
+import { onMounted, computed } from "vue";
+import { useStore } from "vuex";
+
+import CardCourse from "./components/CardCourse.vue";
 
 export default {
   name: "HomeView",
+  setup() {
+    const store = useStore();
 
+    const courses = computed(() => store.state.courses.myCourses);
+
+    onMounted(() => store.dispatch("getCourses"));
+
+    return {
+      courses,
+    };
+  },
   components: {
     CardCourse,
-  }
+  },
 };
 </script>
