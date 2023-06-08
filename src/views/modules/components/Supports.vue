@@ -1,5 +1,5 @@
 <template>
-  <div class="comments">
+  <div class="comments" v-show="lesson.name">
     <div class="header">
       <span class="title">Dúvidas</span>
       <button class="btn primary">
@@ -14,10 +14,23 @@
 </template>
 
 <script>
+import { useStore } from 'vuex'
+import { computed } from 'vue'
+
 import Supports from '@/components/Supports.vue'
 
 export default {
   name: "SupportsLessons",
+
+  setup() {
+    const store = useStore()
+
+    const lesson = computed(() => store.state.courses.lessonPlayer)
+
+    return {
+      lesson,
+    }
+  },
 
   components: {
     Supports
