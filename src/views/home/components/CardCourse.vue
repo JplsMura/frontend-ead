@@ -45,7 +45,7 @@ export default {
     const setCourse = () => {
       store.commit("SET_COURSE_SELECTED", props.course);
 
-      router.push({ name: "campus.modules" });
+      router.push({ name: "campus.modulos" });
     };
 
     return {
