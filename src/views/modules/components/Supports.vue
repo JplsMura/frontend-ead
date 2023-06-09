@@ -1,39 +1,58 @@
 <template>
-  <div class="comments" v-show="lesson.name">
+  <!-- v-show="lesson.name" -->
+  <div class="comments">
     <div class="header">
-      <span class="title">Dúvidas</span>
+      <span class="title">
+        Dúvidas (total: {{ supports.length }})
+        <span v-if="loading"> (Carregando...) </span>
+      </span>
       <button class="btn primary">
         <i class="fas fa-plus"></i>
         Enviar nova dúvida
       </button>
     </div>
 
-    <supports/>
-
+    <supports />
   </div>
 </template>
 
 <script>
-import { useStore } from 'vuex'
-import { computed } from 'vue'
+import { useStore } from "vuex";
+import { computed, ref, watch } from "vue";
 
-import Supports from '@/components/Supports.vue'
+import Supports from "@/components/Supports.vue";
 
 export default {
   name: "SupportsLessons",
 
   setup() {
-    const store = useStore()
+    const store = useStore();
 
-    const lesson = computed(() => store.state.courses.lessonPlayer)
+    const lesson = computed(() => store.state.courses.lessonPlayer);
+
+    const supports = computed(() => store.state.supports.supports.data);
+
+    const loading = ref(false);
+
+    watch(
+      () => store.state.courses.lessonPlayer,
+      () => {
+        loading.value = true;
+        store
+          .dispatch("getSupportsOfLesson", lesson.value.id)
+          .finally(() => (loading.value = false));
+      }
+    );
 
     return {
       lesson,
-    }
+      loading,
+      supports,
+    };
   },
 
   components: {
-    Supports
-  }
+    Supports,
+  },
 };
 </script>
