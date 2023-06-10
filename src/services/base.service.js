@@ -1,10 +1,11 @@
-import Http from "./Http.init"
-export default class BaseService {
-    construct() {
-        this.instance = new BaseService
-    }
+import Http from "./Http.init";
 
-    static request(status = { auth: false }) {
-        return new Http(status)
-    }
+export default class BaseService {
+  constructor() {
+    this.instance = new BaseService();
+  }
+
+  static request(status = { auth: false }) {
+    return new Http(status);
+  }
 }
