@@ -11,49 +11,48 @@
 
     <div class="content">
       <div class="container">
-        
-        <modules/>
+        <modules />
 
         <div class="right">
           <div class="content">
-            
-            <player/>
+            <player />
 
-            <supports-lesson/>
-
+            <supports-lesson />
           </div>
         </div>
-
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import { useStore } from 'vuex'
-import { computed } from 'vue'
+import { useStore } from "vuex";
+import { computed } from "vue";
 
-import Modules from './components/ListsModules.vue'
-import Player from './components/PlayerVideo.vue'
-import SupportsLesson from './components/Supports.vue'
+import Modules from "./components/ListsModules.vue";
+import Player from "./components/PlayerVideo.vue";
+import SupportsLesson from "./components/Supports.vue";
+import router from "@/router";
 
 export default {
   name: "ModulesAndLessons",
-
   setup() {
-    const store = useStore()
+    const store = useStore();
 
-    const course = computed(() => store.state.courses.courseSelected)
+    const course = computed(() => store.state.courses.courseSelected);
+
+    if (course.value.id === "") {
+      router.push({ name: "campus.home" });
+    }
 
     return {
-      course
-    }
+      course,
+    };
   },
-
   components: {
     Modules,
     Player,
-    SupportsLesson
-  }
+    SupportsLesson,
+  },
 };
 </script>
