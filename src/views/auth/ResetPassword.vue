@@ -44,6 +44,9 @@ export default {
     const password = ref("");
     const loading = ref(false);
 
+    const typePassword = ref('password');
+    const toggleShowPassword = () => typePassword.value = typePassword.value === 'password' ? 'text' : 'password';
+
     const auth = () => {
       loading.value = true;
 
@@ -73,6 +76,8 @@ export default {
       email,
       password,
       loading,
+      typePassword,
+      toggleShowPassword
     };
   },
 };
